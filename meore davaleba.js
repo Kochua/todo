@@ -76,7 +76,6 @@ const simplify = pages => {
       if (isDone) {
         break
       }
-
       for (let j = 0; j < techologiesTools.length; j++) {
         const techKey = techologiesTools[j].key
         const technologies = techologiesTools[j].out
@@ -107,4 +106,4 @@ const simplify = pages => {
 
 const result = simplify(input)
 
-R.equals(result, output)
+// R.equals(result, output)

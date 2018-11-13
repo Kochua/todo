@@ -1,15 +1,14 @@
-import React from 'react'
 import './styles.css'
-import Form from './Form'
+import React from 'react'
 import List from './List'
+import AddToDo from './AddToDo'
+
 const App = () => {
   return (
     <div className="container">
-      <h2>HomeFrom</h2>
-      <div>
-        <Form />
-        <List />
-      </div>
+      <h2>Todo list</h2>
+      <AddToDo />
+      <List />
     </div>
   )
 }

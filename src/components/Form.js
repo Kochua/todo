@@ -7,19 +7,18 @@ class Form extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    if (this.state.text) {
-      this.props.submit(this.state.text)
-    }
+    if (this.state.text) this.props.onSubmit(this.state.text)
   }
 
   render() {
     return (
       <form className="form" onSubmit={this.onSubmit}>
         <input
+          type="text"
           name="text"
           className="input"
           value={this.state.text}
-          onChange={e => this.setState({ text: e.target.text })}
+          onChange={e => this.setState({ text: e.target.value })}
         />
         <button type="submit" className="btn">
           Add
