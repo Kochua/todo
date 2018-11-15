@@ -4,11 +4,12 @@ import Form from './Form'
 import { ADD_TODO } from '../redux/actions'
 
 class AddToDo extends Component {
-  onSubmit = data => {
-    const key = Math.floor(Math.random() * 10100)
+  onSubmit = text => {
+    const key = Math.floor(Math.random() * 1000000)
     this.props.ADD_TODO({
       key,
-      data
+      text,
+      done: false
     })
   }
   render() {

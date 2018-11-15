@@ -4,11 +4,14 @@ import ListItem from './ListItem'
 
 class List extends Component {
   renderListItems() {
-    return this.props.toDo.map(({ key, data }) => (
-      <ListItem key={key} num={key}>
-        {data}
-      </ListItem>
-    ))
+    console.log(this.props)
+    if (this.props.toDo) {
+      return this.props.toDo.map(({ key, data, done }) => (
+        <ListItem key={key} num={key} done={done}>
+          {data}
+        </ListItem>
+      ))
+    }
   }
 
   render() {
@@ -16,8 +19,17 @@ class List extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { toDo: state.toDo }
+const mapStateToProps = ({ toDo, filter }) => {
+  switch (filter) {
+    case 'show_all':
+      return { toDo }
+    case 'show_done':
+      return { toDo: toDo.filter(t => t.done) }
+    case 'show_todo':
+      return { toDo: toDo.filter(t => !t.done) }
+    default:
+      console.error('no filter')
+  }
 }
 
 export default connect(mapStateToProps)(List)

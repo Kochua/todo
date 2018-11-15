@@ -42,3 +42,14 @@ body{
    display: flex;
    justify-content: space-between;
 }
+
+
+.list-item__solved {
+   opacity: 0.5;
+   border: 1px solid #cccccc;
+   border-radius: 5px;
+   padding: 5px;
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+}
