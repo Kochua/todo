@@ -72,11 +72,9 @@ const reportTopLevel = pages => {
   return pages
 }
 
-const simplify = pages => {
-  const sortedPage = sortPageByUrl(pages)
+const removeSubPages = pages => {
   const _output = []
-
-  sortedPage.map(p => {
+  pages.map(p => {
     if (_.find(_output, { technologies: p.technologies })) {
       return null
     } else {
@@ -87,8 +85,16 @@ const simplify = pages => {
       return null
     }
   })
+  return _output
+}
 
-  return reportTopLevel(_output)
+const simplify = pages => {
+  const sortedPage = sortPageByUrl(pages)
+  const removedFromSub = removeSubPages(sortedPage)
+  const onlyTopLevelDic = reportTopLevel(removedFromSub)
+  const output = onlyTopLevelDic
+
+  return output
 }
 
 const result = simplify(input)
